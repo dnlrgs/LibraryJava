@@ -1,5 +1,8 @@
 package com.dnlrgs.library.model;
 
+
+import com.dnlrgs.library.exceptions.IsAlreadyBorrowedException;
+
 public class Book {
     private String title;
     private String author;
@@ -29,11 +32,25 @@ public class Book {
         return isBorrowed;
     }
 
-    public void borrowBook () {
+    public void ToBorrowBook() {
+        try {
+            if (isBorrowed == true) {
+                throw new IsAlreadyBorrowedException("Book Already Has Borrowed Status");
+            }
+        } catch (IsAlreadyBorrowedException e) {
+            System.out.println("Error: " + e);
+        }
         isBorrowed = true;
     }
 
-    public void available () {
+    public void toAvailable() {
+        try {
+            if (isBorrowed == false) {
+                throw new IsAlreadyBorrowedException("Book Already Has Available Status");
+            }
+        } catch (IsAlreadyBorrowedException e) {
+            System.out.println("Error: " + e);
+        }
         isBorrowed = false;
     }
 }
