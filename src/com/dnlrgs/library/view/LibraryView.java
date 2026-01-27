@@ -1,6 +1,9 @@
 package com.dnlrgs.library.view;
 
+import java.util.Scanner;
+
 public class LibraryView {
+    Scanner scanner = new Scanner(System.in);
 
     public void startMenu(){
         boolean running = true;
@@ -26,6 +29,8 @@ public class LibraryView {
         System.out.println("║ 0. Exit                     ║");
         System.out.println("╚══════════════════════════════╝");
         System.out.print("Select option: ");
+        int chose = scanner.nextInt();
+        scanner.nextLine();
 
     }
 
