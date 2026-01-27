@@ -35,7 +35,7 @@ public class Book {
     public void ToBorrowBook() {
         try {
             if (isBorrowed == true) {
-                throw new IsAlreadyBorrowedException("Book Already Has Borrowed Status");
+                throw new IsAlreadyBorrowedException("Book Already Has Borrowed Status!");
             }
         } catch (IsAlreadyBorrowedException e) {
             System.out.println("Error: " + e);
@@ -46,7 +46,7 @@ public class Book {
     public void toAvailable() {
         try {
             if (isBorrowed == false) {
-                throw new IsAlreadyBorrowedException("Book Already Has Available Status");
+                throw new IsAlreadyBorrowedException("Book Already Has Available Status!");
             }
         } catch (IsAlreadyBorrowedException e) {
             System.out.println("Error: " + e);
