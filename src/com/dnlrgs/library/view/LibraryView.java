@@ -1,9 +1,14 @@
 package com.dnlrgs.library.view;
 
 import com.dnlrgs.library.controller.LibraryController;
+import com.dnlrgs.library.model.Book;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 public class LibraryView {
     Scanner scanner = new Scanner(System.in);
@@ -18,6 +23,11 @@ public class LibraryView {
             scanner.nextLine();
             switch (choice){
                 case 1: handleAddBook();
+                break;
+                case 2: handleViewAllBooks();
+                break;
+                case 0: handleExit();
+                break;
             }
 
         }
@@ -32,10 +42,10 @@ public class LibraryView {
         System.out.println("║     LIBRARY MANAGEMENT       ║");
         System.out.println("╠══════════════════════════════╣");
         System.out.println("║ 1. Add New Book              ║");
-       /* System.out.println("║ 2. View All Books          ║");
-        System.out.println("║ 3. Borrow Book               ║");
-        System.out.println("║ 4. Return Book               ║");
-        System.out.println("║ 5. Search Books              ║");*/
+        System.out.println("║ 2. View All Books            ║");
+        //System.out.println("║ 3. Borrow Book               ║");
+        //System.out.println("║ 4. Return Book               ║");
+        //System.out.println("║ 5. Search Books              ║");
         System.out.println("║ 0. Exit                      ║");
         System.out.println("╚══════════════════════════════╝");
         System.out.print("Select option: ");
@@ -57,5 +67,20 @@ public class LibraryView {
         String author = scanner.nextLine();
 
         controller.addNewBook(title, author);
+    }
+
+    private void handleViewAllBooks() {
+        List<Book> bookList;
+        bookList = controller.readBookList(controller.getBOOKS_FILE_PATH());
+
+        for(Book book:bookList){
+            System.out.println(book.toString());
+        }
+
+    }
+
+    private void handleExit() {
+        System.out.println("You are exiting the system. Good bye!");
+        System.exit(0);
     }
 }

@@ -4,3 +4,6 @@ O Retrato de Dorian Gray; Oscar Wild; 2; false
 Animal Faram; George Orwell; 3; false
 Encontro Com o MEDO; Steven Jackson; 4; false
 O Cortiço; Aluisio Azevedo; 5; false
+Dom Casmurro; Machado de Assis; 6; false
+Dead Space - Martyr; Brian Evenson; 7; false
+O Morro dos Ventos Uivantes; Emily Brontẽ; 8; false

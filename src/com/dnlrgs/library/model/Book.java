@@ -63,4 +63,9 @@ public class Book {
         }
         isBorrowed = false;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %s, %d, %b", getTitle(), getAuthor(), getId(), getIsBorrowed());
+    }
 }

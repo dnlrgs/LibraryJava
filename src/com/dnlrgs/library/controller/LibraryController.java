@@ -11,8 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryController {
-    private static final String BOOKS_FILE_PATH = "./src/resources/data/books.txt";
+    private final String BOOKS_FILE_PATH = "./src/resources/data/books.txt";
     private static final String FILE_HEADER = "TITLE; AUTHOR; ID; BORROWED";
+
+    public String getBOOKS_FILE_PATH() {
+        return BOOKS_FILE_PATH;
+    }
 
     private static List<Book> bookList = new ArrayList<>();
 
@@ -23,7 +27,8 @@ public class LibraryController {
 
     }
 
-    public static List<Book> readBookList(String filePath) {
+    public List<Book> readBookList(String filePath) {
+        bookList.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String bookLine;
             while ((bookLine = br.readLine()) != null) {
