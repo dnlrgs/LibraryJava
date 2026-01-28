@@ -6,13 +6,23 @@ import com.dnlrgs.library.exceptions.IsAlreadyBorrowedException;
 public class Book {
     private String title;
     private String author;
-    private Integer ID;
-    private Boolean isBorrowed = false;
+    private Integer id;
+    private Boolean isBorrowed;
 
-    public Book(String title, String author, Integer ID, Boolean isBorrowed) {
+    public Book() {
+    }
+
+    public Book(String title, String author, Integer id) {
         this.title = title;
         this.author = author;
-        this.ID = ID;
+        this.id = id;
+        isBorrowed = false;
+    }
+
+    public Book(String title, String author, Integer id, boolean isBorrowed) {
+        this.title = title;
+        this.author = author;
+        this.id = id;
         this.isBorrowed = isBorrowed;
     }
 
@@ -24,17 +34,17 @@ public class Book {
         return author;
     }
 
-    public Integer getID() {
-        return ID;
+    public Integer getId() {
+        return id;
     }
 
-    public Boolean getBorrowed() {
+    public Boolean getIsBorrowed() {
         return isBorrowed;
     }
 
     public void ToBorrowBook() {
         try {
-            if (isBorrowed == true) {
+            if (getIsBorrowed()) {
                 throw new IsAlreadyBorrowedException("Book Already Has Borrowed Status!");
             }
         } catch (IsAlreadyBorrowedException e) {
