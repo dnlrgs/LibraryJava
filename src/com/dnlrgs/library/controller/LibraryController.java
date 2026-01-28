@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryController {
-    private final String BOOKS_FILE_PATH = "./src/resources/data/books.txt";
-    //private final String FILE_HEADER = "TITLE; AUTHOR; ID; BORROWED";
+    private static final String BOOKS_FILE_PATH = "./src/resources/data/books.txt";
+    private static final String FILE_HEADER = "TITLE; AUTHOR; ID; BORROWED";
 
     private static List<Book> bookList = new ArrayList<>();
 
@@ -27,9 +27,11 @@ public class LibraryController {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String bookLine;
             while ((bookLine = br.readLine()) != null) {
-                Book book = convertBookLineToObj(bookLine);
-                if (book != null) {
-                    bookList.add(book);
+                if(!bookLine.equals(FILE_HEADER)) {
+                    Book book = convertBookLineToObj(bookLine);
+                    if (book != null) {
+                        bookList.add(book);
+                    }
                 }
             }
         } catch (FileNotFoundException e) {
@@ -57,9 +59,9 @@ public class LibraryController {
     }
 
     public void addNewBook(String title, String author) throws IOException {
-        bookList = readBookList(BOOKS_FILE_PATH);
         Book newBook = new Book(title, author, createId());
         writeFile(newBook);
+        bookList = readBookList(BOOKS_FILE_PATH);
 
     }
 
@@ -68,10 +70,10 @@ public class LibraryController {
 
         if (!Files.exists(path)) {
             new File(BOOKS_FILE_PATH).createNewFile();
-           /* try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(BOOKS_FILE_PATH))) {
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(BOOKS_FILE_PATH))) {
                 bufferedWriter.write(FILE_HEADER);
                 bufferedWriter.newLine();
-            }*/
+            }
         }
         bookList = readBookList(BOOKS_FILE_PATH);
     }
