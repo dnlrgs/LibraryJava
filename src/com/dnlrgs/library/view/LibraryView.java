@@ -1,15 +1,25 @@
 package com.dnlrgs.library.view;
 
+import com.dnlrgs.library.controller.LibraryController;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class LibraryView {
     Scanner scanner = new Scanner(System.in);
+    LibraryController controller = new LibraryController();
 
-    public void startMenu(){
+    public void startMenu() throws IOException {
         boolean running = true;
 
         while (running) {
             printMenu();
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice){
+                case 1: handleAddBook();
+            }
+
         }
 
 
@@ -29,8 +39,8 @@ public class LibraryView {
         System.out.println("║ 0. Exit                      ║");
         System.out.println("╚══════════════════════════════╝");
         System.out.print("Select option: ");
-        int chose = scanner.nextInt();
-        scanner.nextLine();
+
+
 
     }
 
@@ -38,5 +48,14 @@ public class LibraryView {
         // Simple clear for most terminals
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    private void handleAddBook() throws IOException {
+        System.out.print("Enter book's title: \n");
+        String title = scanner.nextLine();
+        System.out.print("Enter author: ");
+        String author = scanner.nextLine();
+
+        controller.addNewBook(title, author);
     }
 }

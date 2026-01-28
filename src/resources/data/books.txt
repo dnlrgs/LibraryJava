@@ -1,0 +1,6 @@
+TITLE; AUTHOR; ID; BORROWED
+1984; George Orwell; 1; false
+O Retrato de Dorian Gray; Oscar Wild; 2; false
+Animal Faram; George Orwell; 3; false
+Encontro Com o MEDO; Steven Jackson; 4; false
+O Cortiço; Aluisio Azevedo; 5; false
